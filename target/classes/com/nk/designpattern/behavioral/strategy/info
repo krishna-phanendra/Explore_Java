@@ -1,0 +1,6 @@
+In Strategy pattern, a class behavior or its algorithm can be changed at run time
+
+Benefits:
+It provides a substitute to sub classing.
+It defines each behavior within its own class, eliminating the need for conditional statements.
+It makes it easier to extend and incorporate new behavior without changing the application.

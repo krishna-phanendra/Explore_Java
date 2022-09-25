@@ -1,0 +1,7 @@
+Predicate is a functional interface, which accepts an argument and returns a boolean. Usually, 
+it used to apply in a filter for a collection of objects.
+
+@FunctionalInterface
+public interface Predicate<T> {
+  boolean test(T t);
+}

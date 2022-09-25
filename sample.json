@@ -1,0 +1,8 @@
+{
+	"name": "Name1",
+	"age": 18,
+	"location": {
+		"city": "City1",
+		"state": "State1"
+	}
+}

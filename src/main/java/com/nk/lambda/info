@@ -1,0 +1,6 @@
+Lambda Expression:
+------------------
+Lambda Expression are the way through which we can visualize functional programming in the 
+java object oriented world. Objects are the base of java programming language and we can never have 
+a function without an Object, that’s why Java language provide support for using lambda expressions 
+only with functional interfaces.

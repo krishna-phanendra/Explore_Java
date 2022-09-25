@@ -1,0 +1,68 @@
+A functional interface is an interface that contains only one abstract method. 
+They can have only one functionality to exhibit. 
+From Java 8 onwards, lambda expressions can be used to represent the instance of a functional 
+interface. A functional interface can have any number of default methods. Runnable, ActionListener, 
+Comparable are some of the examples of functional interfaces.
+
+Before Java 8, we had to create anonymous inner class objects or implement these interfaces.
+
+Uses : 
+-----
+Java has always been an Object Oriented Programming language. 
+What is means that everything in java programming revolves around Objects (except some primitive 
+types for simplicity). We don’t have only functions in java, they are part of Class and we need 
+to use the class/object to invoke any function.
+
+Important Points/Observations:
+-----------------------------
+1. A functional interface has only one abstract method but it can have multiple default methods.
+2. @FunctionalInterface annotation is used to ensure an interface can’t have more than one abstract 
+	method. The use of this annotation is optional.
+3. The java.util.function package contains many built-in functional interfaces in Java 8.
+
+ some guidance for functional interfaces:
+ ---------------------------------------
+interface Foo { boolean equals(Object obj); }
+// Not functional because equals is already an implicit member (Object class)
+
+interface Comparator<T> {
+ boolean equals(Object obj);
+ int compare(T o1, T o2);
+}
+// Functional because Comparator has only one abstract non-Object method
+
+interface Foo {
+  int m();
+  Object clone();
+}
+// Not functional because method Object.clone is not public
+
+interface X { int m(Iterable<String> arg); }
+interface Y { int m(Iterable<String> arg); }
+interface Z extends X, Y {}
+// Functional: two methods, but they have the same signature
+
+interface X { Iterable m(Iterable<String> arg); }
+interface Y { Iterable<String> m(Iterable arg); }
+interface Z extends X, Y {}
+// Functional: Y.m is a subsignature & return-type-substitutable
+
+interface X { int m(Iterable<String> arg); }
+interface Y { int m(Iterable<Integer> arg); }
+interface Z extends X, Y {}
+// Not functional: No method has a subsignature of all abstract methods
+
+interface X { int m(Iterable<String> arg, Class c); }
+interface Y { int m(Iterable arg, Class<?> c); }
+interface Z extends X, Y {}
+// Not functional: No method has a subsignature of all abstract methods
+
+interface X { long m(); }
+interface Y { int m(); }
+interface Z extends X, Y {}
+// Compiler error: no method is return type substitutable
+
+interface Foo<T> { void m(T arg); }
+interface Bar<T> { void m(T arg); }
+interface FooBar<X, Y> extends Foo<X>, Bar<Y> {}
+// Compiler error: different signatures, same erasure
